@@ -7,7 +7,7 @@ $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-Command 
 $trigger = New-ScheduledTaskTrigger -AtLogOn
 #Trigger: Sets the task to run at user logon.
 
-$principal = New-ScheduledTaskPrincipal -UserId $env:USERNAME -LogonType Interactive -RunLevel Limited
+$principal = New-ScheduledTaskPrincipal -GroupId "Users" -LogonType Group -RunLevel Limited
 #Principal: Uses the logged-in user’s account with limited privileges.
 
 $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
